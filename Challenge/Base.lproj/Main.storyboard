@@ -859,10 +859,10 @@
                                 </connections>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="B2I-W6-sIq">
-                                <rect key="frame" x="16" y="217.5" width="992" height="402.5"/>
+                                <rect key="frame" x="16" y="218" width="992" height="403"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NlY-NC-xSM">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="UA3-vk-zMn"/>
                                             <constraint firstAttribute="height" constant="20.5" id="ZmA-kq-wQn"/>
@@ -872,11 +872,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPd-pA-7tk">
-                                        <rect key="frame" x="0.0" y="25.5" width="992" height="31"/>
+                                        <rect key="frame" x="0.0" y="26" width="992" height="31"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyp-gI-nIn">
-                                                <rect key="frame" x="321" y="0.0" width="22" height="22"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyp-gI-nIn">
+                                                <rect key="frame" x="970" y="4" width="22" height="22"/>
                                                 <state key="normal">
                                                     <color key="titleColor" red="0.37211978439999999" green="0.54335910080000005" blue="0.94906669860000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
@@ -884,9 +883,8 @@
                                                     <action selector="from:" destination="glt-U3-C4r" eventType="touchUpInside" id="1ic-yb-bet"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="From..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DA8-BM-xs3">
-                                                <rect key="frame" x="0.0" y="0.0" width="307" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="From..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DA8-BM-xs3">
+                                                <rect key="frame" x="0.0" y="0.0" width="960" height="31"/>
                                                 <color key="textColor" red="0.16363293970000001" green="0.32356069279999999" blue="0.44395653610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -894,11 +892,17 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="vyp-gI-nIn" secondAttribute="trailing" id="ERb-mN-N5i"/>
+                                            <constraint firstAttribute="bottom" secondItem="DA8-BM-xs3" secondAttribute="bottom" id="LIN-gA-J6f"/>
+                                            <constraint firstItem="DA8-BM-xs3" firstAttribute="top" secondItem="tPd-pA-7tk" secondAttribute="top" id="S4d-aa-rtV"/>
+                                            <constraint firstItem="DA8-BM-xs3" firstAttribute="leading" secondItem="tPd-pA-7tk" secondAttribute="leading" id="U91-f4-0vK"/>
+                                            <constraint firstItem="vyp-gI-nIn" firstAttribute="leading" secondItem="DA8-BM-xs3" secondAttribute="trailing" constant="10" id="ZOp-Je-M7J"/>
+                                            <constraint firstItem="vyp-gI-nIn" firstAttribute="centerY" secondItem="DA8-BM-xs3" secondAttribute="centerY" id="xQ0-nW-1aQ"/>
                                             <constraint firstAttribute="height" constant="31" id="xzM-6i-y0i"/>
                                         </constraints>
                                     </view>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="dcP-he-kIn">
-                                        <rect key="frame" x="0.0" y="61.5" width="992" height="150"/>
+                                        <rect key="frame" x="0.0" y="62" width="992" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="G19-L1-1vF"/>
                                         </constraints>
@@ -910,18 +914,16 @@
                                         </date>
                                     </datePicker>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j0L-1U-n2R">
-                                        <rect key="frame" x="0.0" y="216.5" width="992" height="31"/>
+                                        <rect key="frame" x="0.0" y="217" width="992" height="31"/>
                                         <subviews>
-                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="To..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xIe-8I-4NQ">
-                                                <rect key="frame" x="0.0" y="1" width="307" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="To..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xIe-8I-4NQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="960" height="31"/>
                                                 <color key="textColor" red="0.16363293970000001" green="0.32356069279999999" blue="0.44395653610000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c6A-Ck-Yz4">
-                                                <rect key="frame" x="321" y="4" width="22" height="22"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c6A-Ck-Yz4">
+                                                <rect key="frame" x="970" y="4" width="22" height="22"/>
                                                 <state key="normal">
                                                     <color key="titleColor" red="0.37211978439999999" green="0.54335910080000005" blue="0.94906669860000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
@@ -932,11 +934,17 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="xIe-8I-4NQ" firstAttribute="top" secondItem="j0L-1U-n2R" secondAttribute="top" id="60E-cS-0uV"/>
+                                            <constraint firstItem="c6A-Ck-Yz4" firstAttribute="top" secondItem="j0L-1U-n2R" secondAttribute="top" constant="4" id="Lwi-HZ-Bb4"/>
+                                            <constraint firstAttribute="trailing" secondItem="c6A-Ck-Yz4" secondAttribute="trailing" id="M0s-Il-6Ol"/>
                                             <constraint firstAttribute="height" constant="31" id="X8c-IJ-I3K"/>
+                                            <constraint firstItem="c6A-Ck-Yz4" firstAttribute="leading" secondItem="xIe-8I-4NQ" secondAttribute="trailing" constant="10" id="YSZ-rJ-vaT"/>
+                                            <constraint firstItem="xIe-8I-4NQ" firstAttribute="leading" secondItem="j0L-1U-n2R" secondAttribute="leading" id="nEe-hk-tWB"/>
+                                            <constraint firstAttribute="bottom" secondItem="xIe-8I-4NQ" secondAttribute="bottom" id="oit-hD-1Qg"/>
                                         </constraints>
                                     </view>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="oUw-DB-kcB">
-                                        <rect key="frame" x="0.0" y="252.5" width="992" height="150"/>
+                                        <rect key="frame" x="0.0" y="253" width="992" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="TAb-FG-3I6"/>
                                         </constraints>
