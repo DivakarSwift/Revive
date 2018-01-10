@@ -30,7 +30,7 @@ class MemoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if UIScreen.main.bounds.width == 834 {
+        if UIScreen.main.bounds.width == 834 || UIScreen.main.bounds.width == 1024 {
             heightCollection.constant = 750
         }
         
@@ -259,7 +259,7 @@ extension MemoryViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 cell.player.seek(to: kCMTimeZero)
                 cell.playerLayer = AVPlayerLayer(player: cell.player)
                 switch UIScreen.main.bounds.width {
-                case 834:
+                case 834, 1024:
                     cell.playerLayer.frame = CGRect(x: 0, y: 0, width: 430, height: 237)
                 default:
                     cell.playerLayer.frame = CGRect(x: 0, y: 0, width: 250, height: 114)
@@ -296,7 +296,7 @@ extension MemoryViewController: PinterestLayoutDelegate {
         }
         
         var widthEmotion = CGFloat(114)
-        if UIScreen.main.bounds.width == 834 {
+        if UIScreen.main.bounds.width == 834 || UIScreen.main.bounds.width == 1024 {
             widthEmotion = CGFloat(237)
         }
         switch DataManager.shared.travelStorage[indexOfTravel].cells[indexPath.row].title {
@@ -314,7 +314,7 @@ extension MemoryViewController: PinterestLayoutDelegate {
             return widthEmotion
         default:
             var randomWidth: CGFloat = CGFloat(arc4random_uniform(120) + 130)
-            if UIScreen.main.bounds.width == 834 {
+            if UIScreen.main.bounds.width == 834 || UIScreen.main.bounds.width == 1024 {
                 randomWidth = CGFloat(arc4random_uniform(180) + 250)
             }
 //            let cell = collectionView.cellForItem(at: indexPath) as! MemoryCell

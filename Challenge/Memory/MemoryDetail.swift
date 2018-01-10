@@ -150,7 +150,7 @@ class MemoryDetail: UIViewController {
         
         
         switch UIScreen.main.bounds.width {
-        case 834:
+        case 834, 1024:
             self.constraint.constant = 370
         default:
             self.constraint.constant = 247
@@ -209,7 +209,7 @@ class MemoryDetail: UIViewController {
                 self.navigationController?.navigationBar.alpha = 1.0
                 self.imageTopConstraint.constant = 64
                 switch UIScreen.main.bounds.width {
-                case 834:
+                case 834, 1024:
                     self.constraint.constant = 370
                 default:
                     self.constraint.constant = 247

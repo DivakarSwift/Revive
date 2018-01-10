@@ -68,7 +68,7 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if UIScreen.main.bounds.width == 834 {
+        if UIScreen.main.bounds.width == 834 || UIScreen.main.bounds.width == 1024 {
             self.heighVideoView.constant = 680
             self.heightCollectionView.constant = 680
         }

@@ -62,7 +62,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if UIScreen.main.bounds.width == 834 {
+        if UIScreen.main.bounds.width == 834 || UIScreen.main.bounds.width == 1024 {
             for constraint in constChoosePic {
                 constraint.constant = 270
             }
