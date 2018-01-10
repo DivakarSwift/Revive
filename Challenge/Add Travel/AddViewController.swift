@@ -71,7 +71,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
 
     
     @IBAction func pickPhoto(_ sender: UITapGestureRecognizer) {
-        CameraManager.shared.newImageLibrary(controller: self, sourceIfPad: nil, editing: false) { (image) in
+        CameraManager.shared.newImageLibrary(controller: self, sourceIfPad: self.view, editing: false) { (image) in
             self.imageView.image = image
         }
     }

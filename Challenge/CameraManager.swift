@@ -15,7 +15,7 @@ protocol CameraManagerDelegate {
 }
 
 class CameraManager: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPopoverPresentationControllerDelegate {
-   
+    
     static let shared = CameraManager()
     
     //nel controller che deve ricevere l'immagine aggingere il delegato CameraManagerDelegate
@@ -51,7 +51,7 @@ class CameraManager: NSObject, UINavigationControllerDelegate, UIImagePickerCont
                 
                 popover.sourceView = sourceIfPad
                 let rect = CGRect(x: sourceIfPad!.frame.size.width / 2,
-                    y: sourceIfPad!.frame.size.height + 4, width: 1, height: 1)
+                                  y: sourceIfPad!.frame.size.height + 4, width: 1, height: 1)
                 
                 popover.sourceRect = rect //imageUser.frame
                 popover.backgroundColor = UIColor.white
@@ -81,7 +81,7 @@ class CameraManager: NSObject, UINavigationControllerDelegate, UIImagePickerCont
         if let test = overlay {
             picker.cameraOverlayView = test
         }
-
+        
         if UIDevice.current.userInterfaceIdiom == .pad {
             
             picker.modalPresentationStyle = .popover
@@ -93,7 +93,7 @@ class CameraManager: NSObject, UINavigationControllerDelegate, UIImagePickerCont
                 
                 popover.sourceView = sourceIfPad
                 let rect = CGRect(x: sourceIfPad!.frame.size.width / 2,
-                    y: sourceIfPad!.frame.size.height + 4, width: 1, height: 1)
+                                  y: sourceIfPad!.frame.size.height + 4, width: 1, height: 1)
                 
                 popover.sourceRect = rect //imageUser.frame
                 popover.backgroundColor = UIColor.black
@@ -124,7 +124,29 @@ class CameraManager: NSObject, UINavigationControllerDelegate, UIImagePickerCont
         picker.mediaTypes = arra as! [String]
         picker.allowsEditing = editing
         
-        controller.present(picker, animated: true, completion: nil)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            
+            picker.modalPresentationStyle = .popover
+            if let popover = picker.popoverPresentationController {
+                // impostamo la direzione della freccia
+                popover.permittedArrowDirections = .up
+                
+                popover.delegate = self
+                
+                popover.sourceView = sourceIfPad
+                let rect = CGRect(x: sourceIfPad!.frame.size.width / 2,
+                                  y: sourceIfPad!.frame.size.height + 4, width: 1, height: 1)
+                
+                popover.sourceRect = rect //imageUser.frame
+                popover.backgroundColor = UIColor.black
+            }
+            controller.view.layoutIfNeeded()
+            controller.present(picker, animated: true, completion: nil)
+            
+            
+        } else {
+            controller.present(picker, animated: true, completion: nil)
+        }
     }
     
     //gira un nuovo video
@@ -141,7 +163,29 @@ class CameraManager: NSObject, UINavigationControllerDelegate, UIImagePickerCont
         picker.videoExportPreset = AVAssetExportPresetMediumQuality
         picker.allowsEditing = editing
         
-        controller.present(picker, animated: true, completion: nil)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            
+            picker.modalPresentationStyle = .popover
+            if let popover = picker.popoverPresentationController {
+                // impostamo la direzione della freccia
+                popover.permittedArrowDirections = .up
+                
+                popover.delegate = self
+                
+                popover.sourceView = sourceIfPad
+                let rect = CGRect(x: sourceIfPad!.frame.size.width / 2,
+                                  y: sourceIfPad!.frame.size.height + 4, width: 1, height: 1)
+                
+                popover.sourceRect = rect //imageUser.frame
+                popover.backgroundColor = UIColor.black
+            }
+            controller.view.layoutIfNeeded()
+            controller.present(picker, animated: true, completion: nil)
+            
+            
+        } else {
+            controller.present(picker, animated: true, completion: nil)
+        }
     }
     
     //SANDBOX
@@ -158,7 +202,7 @@ class CameraManager: NSObject, UINavigationControllerDelegate, UIImagePickerCont
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString
-    
+        
         if mediaType == kUTTypeImage {
             
             let imageEdited : UIImage? = info[UIImagePickerControllerEditedImage] as? UIImage
@@ -172,13 +216,13 @@ class CameraManager: NSObject, UINavigationControllerDelegate, UIImagePickerCont
             
         } else if mediaType == kUTTypeMovie {
             let videoURL = info[UIImagePickerControllerMediaURL] as! URL
-                let filePath = videoURL.absoluteString
-                self.completionHandlerVideo(filePath)
+            let filePath = videoURL.absoluteString
+            self.completionHandlerVideo(filePath)
         }
         
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         delegate?.cancelImageOrVideoSelection()
         picker.dismiss(animated: true, completion: nil)
@@ -186,3 +230,4 @@ class CameraManager: NSObject, UINavigationControllerDelegate, UIImagePickerCont
     
     
 }
+

@@ -24,9 +24,15 @@ class MemoryViewController: UIViewController {
     @IBOutlet var playButton: UIButton!
     @IBOutlet var nextButton: UIButton!
     
+    @IBOutlet var heightCollection: NSLayoutConstraint!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UIScreen.main.bounds.width == 834 {
+            heightCollection.constant = 750
+        }
         
         DataManager.shared.MemoryViewContr = self
         DataManager.shared.travelStorage[indexOfTravel].cells.shuffle()
@@ -50,6 +56,8 @@ class MemoryViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
         NotificationCenter.default.addObserver(self, selector: #selector(playAndPause(_:)), name: .UIApplicationWillEnterForeground, object: nil)
@@ -282,7 +290,10 @@ extension MemoryViewController: PinterestLayoutDelegate {
             DataManager.shared.haveToReloadLayout = false
         }
         
-        let widthEmotion = CGFloat(114)
+        var widthEmotion = CGFloat(114)
+        if UIScreen.main.bounds.width == 834 {
+            widthEmotion = CGFloat(237)
+        }
         switch DataManager.shared.travelStorage[indexOfTravel].cells[indexPath.row].title {
         case "Funny":
             return widthEmotion
@@ -297,7 +308,10 @@ extension MemoryViewController: PinterestLayoutDelegate {
         case "Angry":
             return widthEmotion
         default:
-            let randomWidth: CGFloat = CGFloat(arc4random_uniform(120) + 130)
+            var randomWidth: CGFloat = CGFloat(arc4random_uniform(120) + 130)
+            if UIScreen.main.bounds.width == 834 {
+                randomWidth = CGFloat(arc4random_uniform(180) + 250)
+            }
 //            let cell = collectionView.cellForItem(at: indexPath) as! MemoryCell
 //            cell.playerLayer.frame = CGRect(x: 0, y: 0, width: randomWidth, height: 114)
             return randomWidth

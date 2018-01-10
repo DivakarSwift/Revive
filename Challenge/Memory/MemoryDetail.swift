@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import AVKit
 
 class MemoryDetail: UIViewController {
     
@@ -30,10 +31,10 @@ class MemoryDetail: UIViewController {
     @IBOutlet var labelNoVideos: UILabel!
     
     var player: AVPlayer!
-    var playerLayer1: AVPlayerLayer!
-    var playerLayer2: AVPlayerLayer!
-    var originalFramLayer1: CGRect!
-    var originalFramLayer2: CGRect!
+//    var playerLayer1: AVPlayerLayer!
+//    var playerLayer2: AVPlayerLayer!
+//    var originalFramLayer1: CGRect!
+//    var originalFramLayer2: CGRect!
     var repeatVideo: Bool = true
     
     
@@ -131,6 +132,15 @@ class MemoryDetail: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        for memory in DataManager.shared.travelStorage[indexOfTravel].memories {
+            if memory.title == self.memoryName {
+                if memory.videos.count > 0 {
+                    print("DEBUG: CI SONO VIDEO")
+                    print("\(memory.videos[0])")
+                }
+            }
+        }
+        
         setNavBarInAppear()
         
         let tapOnPhoto = UITapGestureRecognizer(target: self, action:#selector(photosFullScreen))
@@ -138,9 +148,9 @@ class MemoryDetail: UIViewController {
         imageView.addGestureRecognizer(tapOnPhoto)
         
         
-        let tapOnVideo = UITapGestureRecognizer(target: self, action: #selector(videosFullScreen))
-        videoView.isUserInteractionEnabled = false
-        videoView.addGestureRecognizer(tapOnVideo)
+//        let tapOnVideo = UITapGestureRecognizer(target: self, action: #selector(videosFullScreen))
+//        videoView.isUserInteractionEnabled = false
+//        videoView.addGestureRecognizer(tapOnVideo)
         
         if images.count > 0 {
             imageSequence()
@@ -160,8 +170,8 @@ class MemoryDetail: UIViewController {
         if player != nil {
             repeatVideo = false
             player.pause()
-            playerLayer2.removeFromSuperlayer()
-            playerLayer1.removeFromSuperlayer()
+//            playerLayer2.removeFromSuperlayer()
+//            playerLayer1.removeFromSuperlayer()
             player = nil
         }
     }
@@ -200,28 +210,28 @@ class MemoryDetail: UIViewController {
         }
     }
     
-    @objc func videosFullScreen() {
-        UIView.animate(withDuration: 0.5, animations: {
-            switch self.constraint.constant {
-            case 247:
-                self.navigationController?.navigationBar.alpha = 0.0
-                
-                let newFrame = self.view.bounds
-                self.playerLayer2.frame = newFrame
-                self.playerLayer1.frame = newFrame
-                self.constraint.constant = self.view.frame.size.height
-            default:
-                self.navigationController?.navigationBar.alpha = 1.0
-                
-                self.playerLayer1.frame = self.originalFramLayer1
-                self.playerLayer2.frame = self.originalFramLayer2
-                self.constraint.constant = 247
-                
-            }
-            self.view.layoutIfNeeded()
-        })
-        
-    }
+//    @objc func videosFullScreen() {
+//        UIView.animate(withDuration: 0.5, animations: {
+//            switch self.constraint.constant {
+//            case 247:
+//                self.navigationController?.navigationBar.alpha = 0.0
+//
+//                let newFrame = self.view.bounds
+//                self.playerLayer2.frame = newFrame
+//                self.playerLayer1.frame = newFrame
+//                self.constraint.constant = self.view.frame.size.height
+//            default:
+//                self.navigationController?.navigationBar.alpha = 1.0
+//
+//                self.playerLayer1.frame = self.originalFramLayer1
+//                self.playerLayer2.frame = self.originalFramLayer2
+//                self.constraint.constant = 247
+//
+//            }
+//            self.view.layoutIfNeeded()
+//        })
+//
+//    }
     
 
     override func didReceiveMemoryWarning() {
@@ -271,27 +281,37 @@ class MemoryDetail: UIViewController {
         
         player = AVPlayer(url: videos[0])
         player.seek(to: kCMTimeZero)
-        playerLayer1 = AVPlayerLayer(player: player)
-        playerLayer2 = AVPlayerLayer(player: player)
+//        playerLayer1 = AVPlayerLayer(player: player)
+//        playerLayer2 = AVPlayerLayer(player: player)
+//
+//        playerLayer1.frame = self.videoViewBackground.bounds
+//        playerLayer2.frame = self.videoView.bounds
+//        originalFramLayer1 = playerLayer1.bounds
+//        originalFramLayer2 = playerLayer2.bounds
+//
+//        playerLayer1.videoGravity = AVLayerVideoGravity.resizeAspectFill
+//        playerLayer2.videoGravity = AVLayerVideoGravity.resizeAspect
+//
+//        videoViewBackground.layer.addSublayer(playerLayer1)
+//        videoView.layer.addSublayer(playerLayer2)
+//
+//        player.play()
+//        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { (Notification) in
+//            if self.repeatVideo {
+//                self.player.seek(to: kCMTimeZero)
+//                self.player.play()
+//            }
+//        }
         
-        playerLayer1.frame = self.videoViewBackground.bounds
-        playerLayer2.frame = self.videoView.bounds
-        originalFramLayer1 = playerLayer1.bounds
-        originalFramLayer2 = playerLayer2.bounds
+        let playerController = AVPlayerViewController()
+        playerController.player = player
+        self.addChildViewController(playerController)
+        playerController.view.frame = self.videoView.frame
         
-        playerLayer1.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        playerLayer2.videoGravity = AVLayerVideoGravity.resizeAspect
-        
-        videoViewBackground.layer.addSublayer(playerLayer1)
-        videoView.layer.addSublayer(playerLayer2)
+        // Add sub view in your view
+        self.videoView.addSubview(playerController.view)
         
         player.play()
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { (Notification) in
-            if self.repeatVideo {
-                self.player.seek(to: kCMTimeZero)
-                self.player.play()
-            }
-        }
         
     }
     

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5638A54F1FDEACEF0058B579 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5638A54E1FDEACEF0058B579 /* AppDelegate.swift */; };
 		5638A5541FDEACEF0058B579 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5638A5521FDEACEF0058B579 /* Main.storyboard */; };
-		5638A5561FDEACEF0058B579 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5638A5551FDEACEF0058B579 /* Assets.xcassets */; };
 		D10E660B1FE0633800F9042F /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10E660A1FE0633800F9042F /* AddViewController.swift */; };
 		D10E660D1FE0634700F9042F /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10E660C1FE0634700F9042F /* MemoryViewController.swift */; };
 		FA2E04F61FE2DFD7008BB2F1 /* addMediaCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E04F51FE2DFD7008BB2F1 /* addMediaCollectionCell.swift */; };
@@ -71,6 +70,7 @@
 		FAA31EE41FE2C8DB006A4D54 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA31EB41FE2C8DB006A4D54 /* VideoCell.swift */; };
 		FAA31EE51FE2C8DB006A4D54 /* VideoBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA31EB51FE2C8DB006A4D54 /* VideoBox.swift */; };
 		FAA31EE61FE2C8DB006A4D54 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA31EB61FE2C8DB006A4D54 /* Video.swift */; };
+		FACB0F2720061B4700D1083D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5638A5551FDEACEF0058B579 /* Assets.xcassets */; };
 		FAD260671FE58E0D00558879 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAD260651FE58DEB00558879 /* Lato-Light.ttf */; };
 		FAD260681FE58E0F00558879 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAD260641FE58DEA00558879 /* Lato-Regular.ttf */; };
 		FAE962ED1FE7F9C1000E2420 /* PinterestLayoutHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE962EC1FE7F9C1000E2420 /* PinterestLayoutHorizontal.swift */; };
@@ -498,8 +498,8 @@
 				FA9FDE641FE93F5C00A36BA7 /* Launch Screen.storyboard in Resources */,
 				FAD260671FE58E0D00558879 /* Lato-Light.ttf in Resources */,
 				FAD260681FE58E0F00558879 /* Lato-Regular.ttf in Resources */,
-				5638A5561FDEACEF0058B579 /* Assets.xcassets in Resources */,
 				FA2E04F81FE2E304008BB2F1 /* Gallery.bundle in Resources */,
+				FACB0F2720061B4700D1083D /* Assets.xcassets in Resources */,
 				5638A5541FDEACEF0058B579 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -708,7 +708,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 68FEY34X6P;
 				INFOPLIST_FILE = Challenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.iosda.thunderbeard.challenge;
@@ -726,7 +726,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 68FEY34X6P;
 				INFOPLIST_FILE = Challenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.iosda.thunderbeard.challenge;
