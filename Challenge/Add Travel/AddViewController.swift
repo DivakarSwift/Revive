@@ -34,6 +34,9 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var datePickerToHeight: NSLayoutConstraint!
     
     
+    @IBOutlet var constChoosePic: [NSLayoutConstraint]!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,6 +61,12 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if UIScreen.main.bounds.width == 834 {
+            for constraint in constChoosePic {
+                constraint.constant = 270
+            }
+        }
         
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = (self.view.frame.size.width - (self.nsconstraint.constant*2)) / 2

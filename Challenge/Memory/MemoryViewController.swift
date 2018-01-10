@@ -74,7 +74,7 @@ class MemoryViewController: UIViewController {
         
         PlaylistManager.shared.playlist = playlist
         
-        musicPlayer.stop()
+        //musicPlayer.stop()
         playing = false
         if playlist != nil {
             musicPlayer.setQueue(with: playlist!)
@@ -258,7 +258,12 @@ extension MemoryViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 cell.player = AVPlayer(url: memoryForCell.videos[0])
                 cell.player.seek(to: kCMTimeZero)
                 cell.playerLayer = AVPlayerLayer(player: cell.player)
-                cell.playerLayer.frame = CGRect(x: 0, y: 0, width: 250, height: 114)
+                switch UIScreen.main.bounds.width {
+                case 834:
+                    cell.playerLayer.frame = CGRect(x: 0, y: 0, width: 430, height: 237)
+                default:
+                    cell.playerLayer.frame = CGRect(x: 0, y: 0, width: 250, height: 114)
+                }
                 cell.playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
                 cell.videoView.layer.addSublayer(cell.playerLayer)
                 cell.player.isMuted = true

@@ -21,6 +21,11 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var textField: UITextField!
     @IBOutlet var addMediaButtonOutlet: UIButton!
     @IBOutlet var emotionsButtons: [UIButton]!
+    
+    
+    @IBOutlet var heighVideoView: NSLayoutConstraint!
+    @IBOutlet var heightCollectionView: NSLayoutConstraint!
+    
 
     var photoPickedFromGallery: [UIImage] = []
     var videoPickedFromGallery: URL!
@@ -62,6 +67,11 @@ class NewMemoryViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if UIScreen.main.bounds.width == 834 {
+            self.heighVideoView.constant = 680
+            self.heightCollectionView.constant = 680
+        }
         
         // collection view e video view hiddet al load
         self.collectionView.isHidden = true

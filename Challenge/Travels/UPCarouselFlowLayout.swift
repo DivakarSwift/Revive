@@ -23,7 +23,9 @@ open class UPCarouselFlowLayout: UICollectionViewFlowLayout {
                 return CGSize(width: 260, height: 260)
             } else if UIScreen.main.bounds.width == 834 {
                 return CGSize(width: 500, height: 500)
-            } else {
+            } else if UIScreen.main.bounds.width == 1024 {
+                return CGSize(width: 630, height: 630)
+            }else {
                 return CGSize(width: 235, height: 235)
             }
         }

@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import AVKit
+import MediaPlayer
 
 class MemoryDetail: UIViewController {
     
@@ -148,6 +149,13 @@ class MemoryDetail: UIViewController {
         imageView.addGestureRecognizer(tapOnPhoto)
         
         
+        switch UIScreen.main.bounds.width {
+        case 834:
+            self.constraint.constant = 370
+        default:
+            self.constraint.constant = 247
+        }
+        
 //        let tapOnVideo = UITapGestureRecognizer(target: self, action: #selector(videosFullScreen))
 //        videoView.isUserInteractionEnabled = false
 //        videoView.addGestureRecognizer(tapOnVideo)
@@ -200,7 +208,12 @@ class MemoryDetail: UIViewController {
             case 0:
                 self.navigationController?.navigationBar.alpha = 1.0
                 self.imageTopConstraint.constant = 64
-                self.constraint.constant = 247
+                switch UIScreen.main.bounds.width {
+                case 834:
+                    self.constraint.constant = 370
+                default:
+                    self.constraint.constant = 247
+                }
             default:
                 self.navigationController?.navigationBar.alpha = 0.0
                 self.imageTopConstraint.constant = 0
@@ -279,7 +292,8 @@ class MemoryDetail: UIViewController {
     func videosPlay() {
         videoView.isUserInteractionEnabled = true
         
-        player = AVPlayer(url: videos[0])
+        var i = 0
+        player = AVPlayer(url: videos[i])
         player.seek(to: kCMTimeZero)
 //        playerLayer1 = AVPlayerLayer(player: player)
 //        playerLayer2 = AVPlayerLayer(player: player)
@@ -312,6 +326,25 @@ class MemoryDetail: UIViewController {
         self.videoView.addSubview(playerController.view)
         
         player.play()
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { (Notification) in
+            if self.repeatVideo {
+//                i += 1
+//                if i < self.videos.count {
+//                    self.player = AVPlayer(url: self.videos[i])
+//                    self.player.seek(to: kCMTimeZero)
+//                    self.player.play()
+//                } else {
+//                    i = 0
+//                    self.player = AVPlayer(url: self.videos[i])
+//                    self.player.seek(to: kCMTimeZero)
+//                    self.player.play()
+//                }
+                self.player.seek(to: kCMTimeZero)
+                self.player.play()
+            }
+        }
+
         
     }
     
@@ -359,6 +392,7 @@ extension MemoryDetail: GalleryControllerDelegate {
             }
         }
         
+        imageSequence()
         controller.dismiss(animated: true, completion: nil)
     }
     
