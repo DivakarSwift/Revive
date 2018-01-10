@@ -32,7 +32,7 @@ class MemoryCell: UICollectionViewCell {
     
     @objc func longPress(sender: UILongPressGestureRecognizer) {
         
-        let alert = UIAlertController(title: "Remove Memory", message: "Are you sure?", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Remove Memory", message: "Are you sure?", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
             DataManager.shared.removeMemory(indexOfTravel: DataManager.shared.MemoryViewContr.indexOfTravel, memoryName: self.labelCell.text!)

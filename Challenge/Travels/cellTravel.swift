@@ -29,7 +29,7 @@ class cellTravel: UICollectionViewCell {
     
     @objc func longPress(sender: UILongPressGestureRecognizer) {
         
-        let alert = UIAlertController(title: "Remove Travel", message: "Are you sure?", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Remove Travel", message: "Are you sure?", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
             
@@ -41,7 +41,7 @@ class cellTravel: UICollectionViewCell {
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
-        DataManager.shared.collectionViewContr.present(alert, animated: true, completion: nil)
+       DataManager.shared.collectionViewContr.present(alert, animated: true, completion: nil)
     }
     
     
